@@ -1,0 +1,73 @@
+// Validate the login form
+function validateLoginForm() {
+    let email = document.getElementById('email').value;
+    let password = document.getElementById('password').value;
+    let emailError = document.getElementById('emailError');
+    let passwordError = document.getElementById('passwordError');
+    let isValid = true;
+
+    // Clear previous errors
+    emailError.textContent = '';
+    passwordError.textContent = '';
+
+    // Validate email
+    let emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailPattern.test(email)) {
+        emailError.textContent = 'Please enter a valid email address.';
+        isValid = false;
+    }
+
+    // Validate password
+    if (password.length < 6) {
+        passwordError.textContent = 'Password must be at least 6 characters long.';
+        isValid = false;
+    }
+
+    return isValid;
+}
+
+// Validate the registration form
+function validateRegisterForm() {
+    let username = document.getElementById('username').value;
+    let email = document.getElementById('email').value;
+    let password = document.getElementById('password').value;
+    let confirmPassword = document.getElementById('confirmPassword').value;
+    let usernameError = document.getElementById('usernameError');
+    let emailError = document.getElementById('emailError');
+    let passwordError = document.getElementById('passwordError');
+    let confirmPasswordError = document.getElementById('confirmPasswordError');
+    let isValid = true;
+
+    // Clear previous errors
+    usernameError.textContent = '';
+    emailError.textContent = '';
+    passwordError.textContent = '';
+    confirmPasswordError.textContent = '';
+
+    // Validate username
+    if (username.length < 3) {
+        usernameError.textContent = 'Username must be at least 3 characters.';
+        isValid = false;
+    }
+
+    // Validate email
+    let emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailPattern.test(email)) {
+        emailError.textContent = 'Please enter a valid email address.';
+        isValid = false;
+    }
+
+    // Validate password
+    if (password.length < 6) {
+        passwordError.textContent = 'Password must be at least 6 characters long.';
+        isValid = false;
+    }
+
+    // Check if passwords match
+    if (password !== confirmPassword) {
+        confirmPasswordError.textContent = 'Passwords do not match.';
+        isValid = false;
+    }
+
+    return isValid;
+}
